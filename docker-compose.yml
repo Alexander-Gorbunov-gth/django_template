@@ -1,0 +1,35 @@
+version: '3'
+
+volumes:
+  pg_data:
+  static:
+  media:
+
+services:
+  db:
+    image: postgres:15
+    env_file: .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  django_partner:
+    build: ./django_partner/
+    env_file: .env
+    volumes:
+      - static:/app/static
+      - media:/app/media
+    depends_on:
+      - db
+  gateway:
+    build: ./nginx/
+    env_file: .env
+    ports:
+      - 80:80
+    volumes:
+      - static:/static
+      - media:/media
+    depends_on:
+      - django_partner
+      - db
+
