@@ -1,12 +1,10 @@
-from .params import get_settings
+from .params import cfg
 from .constats import BASE_DIR
 
-cfg = get_settings()
 
+ALLOWED_HOSTS = cfg.django.ALLOWED_HOSTS.split(",")
 
-ALLOWED_HOSTS = cfg.ALLOWED_HOSTS.split(",")
-
-CSRF_TRUSTED_ORIGINS = cfg.CSRF_TRUSTED_ORIGINS.split(",")
+CSRF_TRUSTED_ORIGINS = cfg.django.CSRF_TRUSTED_ORIGINS.split(",")
 
 ROOT_URLCONF = "apps.core.urls"
 
@@ -34,21 +32,13 @@ AUTH_PASSWORD_VALIDATORS = [
         ),
     },
     {
-        "NAME": (
-            "django.contrib.auth" ".password_validation.MinimumLengthValidator"
-        ),
+        "NAME": ("django.contrib.auth" ".password_validation.MinimumLengthValidator"),
     },
     {
-        "NAME": (
-            "django.contrib.auth"
-            ".password_validation.CommonPasswordValidator"
-        ),
+        "NAME": ("django.contrib.auth" ".password_validation.CommonPasswordValidator"),
     },
     {
-        "NAME": (
-            "django.contrib.auth"
-            ".password_validation.NumericPasswordValidator"
-        ),
+        "NAME": ("django.contrib.auth" ".password_validation.NumericPasswordValidator"),
     },
 ]
 
@@ -68,7 +58,6 @@ STATIC_ROOT = BASE_DIR / "static"
 #     BASE_DIR / "static",
 #     # "/app/static/",
 # ]
-
 
 
 MEDIA_URL = "/media/"

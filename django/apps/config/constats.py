@@ -1,15 +1,13 @@
 from pathlib import Path
 
-from .params import get_settings
-
-cfg = get_settings()
+from .params import cfg
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-SECRET_KEY = cfg.SECRET_KEY
+SECRET_KEY = cfg.django.SECRET_KEY
 
-DEBUG = cfg.DEBUG
+DEBUG = cfg.django.DEBUG
 
 LANGUAGE_CODE = "ru-ru"
 
@@ -21,6 +19,8 @@ USE_TZ = True
 
 DATE_FORMAT = "%d.%m.%Y"
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = "users.User"
 
-DATE_INPUT_FORMATS = ["%d.%m.%Y", ]
+DATE_INPUT_FORMATS = [
+    "%d.%m.%Y",
+]

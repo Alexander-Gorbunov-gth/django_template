@@ -1,16 +1,14 @@
-from .params import get_settings
-
-cfg = get_settings()
+from .params import cfg
 
 
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": cfg.DB_NAME,
-        "USER": cfg.DB_USER,
-        "PASSWORD": cfg.DB_PASSWORD,
-        "HOST": cfg.DB_HOST,
-        "PORT": cfg.DB_PORT,
-        "OPTIONS": {"options": f"-c search_path={cfg.DB_SCHEMAS}"},
+        "NAME": cfg.db.DB_NAME,
+        "USER": cfg.db.DB_USER,
+        "PASSWORD": cfg.db.DB_PASSWORD,
+        "HOST": cfg.db.DB_HOST,
+        "PORT": cfg.db.DB_PORT,
+        "OPTIONS": {"options": f"-c search_path={cfg.db.DB_SCHEMAS}"},
     }
 }
